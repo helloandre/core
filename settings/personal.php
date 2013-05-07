@@ -52,6 +52,11 @@ foreach($languageCodes as $lang) {
 	}
 }
 
+// Delete the empty entry from the used language in the common languages
+if (in_array($userLang['code'], $commonlangcodes)) {
+	unset($commonlanguages[array_search($userLang['code'], $commonlangcodes)]);
+}
+
 // sort now by displayed language not the iso-code
 usort( $languages, function ($a, $b) {
 	return strcmp($a['name'], $b['name']);
